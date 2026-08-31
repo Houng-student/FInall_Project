@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "AirPods Pro 2",
+    "brand": "Apple",
+    "price": 249,
+    "category": "Headphone",
+    "discount": "-10%",
+    "image": "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=600",
+    "description": "Wireless earbuds with active noise cancellation."
+  },
+  {
+    "id": 2,
+    "name": "MacBook Sleeve",
+    "brand": "Apple",
+    "price": 59,
+    "category": "Bag",
+    "discount": "-15%",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600",
+    "description": "Protective sleeve for MacBook."
+  },
+  {
+    "id": 3,
+    "name": "iPhone 15 Case",
+    "brand": "Apple",
+    "price": 39,
+    "category": "Phone",
+    "discount": "-10%",
+    "image": "https://images.unsplash.com/photo-1603313011107-3f1b9a7f7e5c?w=600",
+    "description": "Protective case for iPhone."
+  },
+  {
+    "id": 4,
+    "name": "Magic Keyboard",
+    "brand": "Apple",
+    "price": 99,
+    "category": "Keyboard",
+    "discount": "-5%",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600",
+    "description": "Wireless keyboard for Mac."
+  },
+  {
+    "id": 5,
+    "name": "Magic Mouse",
+    "brand": "Apple",
+    "price": 79,
+    "category": "Mouse",
+    "discount": "-8%",
+    "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=600",
+    "description": "Wireless mouse designed for Mac."
+  },
+  {
+    "id": 6,
+    "name": "USB-C Charger",
+    "brand": "Apple",
+    "price": 49,
+    "category": "Charger",
+    "discount": "-10%",
+    "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600",
+    "description": "Fast USB-C charger."
+  }
+]
