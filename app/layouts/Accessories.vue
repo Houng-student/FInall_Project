@@ -1,52 +1,42 @@
 <script setup lang="ts">
-    type accessories = {
+
+    type iphone = {
         id:number,
-        image : string,
-        name: string
+        image: string,
+        name:string,
+        price:string,
+        oldPrice:string,
+        discount:string,
+        reviews:number
     }
-    const Accessories : accessories[] = 
-    [
-        {   
-            id:1,
-            image: "https://i.pinimg.com/736x/6b/25/a4/6b25a43a5a8ef63d5280d644c9e52f4f.jpg",
-            name:"Apple"
-        },
-        {   
-            id:2,
-            image: "https://i.pinimg.com/736x/62/d0/00/62d000cf5e662f18d76d0946d485d351.jpg",
-            name:"Headphone"
-        },
-        {   
-            id:3,
-            image: "https://i.pinimg.com/1200x/fa/15/d2/fa15d22acf9d940eaa0af58f91fe5e02.jpg",
-            name:"Bags & Sleeve"
-        },
-        {   
-            id:4,
-            image: "https://i.pinimg.com/736x/ae/e5/5c/aee55cfbb89cb7b8b8a2d9d3f56817b9.jpg",
-            name:"Cables & Adapters"
-        },
-        {   
-            id:5,
-            image: "https://i.pinimg.com/736x/c7/59/f7/c759f72cef6de6d92c200a9c8db4698f.jpg",
-            name:"Cases & Protection"
-        },
-        {   
-            id:6,
-            image: "https://i.pinimg.com/736x/c7/59/f7/c759f72cef6de6d92c200a9c8db4698f.jpg",
-            name:"Power Banks"
-        }
-    ]
+    const promoProducts = ref([
+    { id: 1, name: 'Samsung Galaxy S24 Ultra', price: '1 049', oldPrice: '1 249', discount: '-16%', reviews: 120, image: 'https://i.pinimg.com/1200x/d3/a8/cf/d3a8cff17a11fb159161bc6d895c97cb.jpg' },
+    { id: 2, name: 'iPhone 14', price: '729', oldPrice: '849', discount: '-14%', reviews: 95, image: 'https://i.pinimg.com/736x/57/cd/91/57cd91258024123d8fa45c65dc5e64aa.jpg' },
+    { id: 3, name: 'Google Pixel 8', price: '599', oldPrice: '699', discount: '-14%', reviews: 74, image: 'https://i.pinimg.com/1200x/ed/93/e5/ed93e514854b5aac82409189a813db4e.jpg' },
+    { id: 4, name: 'Xiaomi 13T Pro', price: '549', oldPrice: '649', discount: '-15%', reviews: 88, image: 'https://i.pinimg.com/1200x/aa/7a/ad/aa7aad823f3ef787cbef7b545f261eb3.jpg' },
+    ]);
 </script>
 <template>
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 mx-55 gap-3">
-        <div v-for="acc in Accessories" :key="acc.id" class="bg-white  rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden group">
-            <div class="h-50 flex items-center justify-center bg-white object-cover group-hover:scale-105 transition duration-300">
-                <img :src="acc.image" :alt=" acc.name">
-            </div>
-            <div class="text-center text-md py-10">
-                <p>{{ acc.name }}</p>
-            </div>
+    <section class="max-w-7xl mx-auto px-8 py-12">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-bold">Promotions</h2>
+        <a href="#" class="text-sm text-blue-600 hover:underline font-medium">Voir toutes les promotions</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div v-for="product in promoProducts" :key="product.id" class="relative border border-gray-200 rounded-xl p-4 flex flex-col items-center hover:shadow-lg transition">
+          <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded">
+            Promo
+          </span>
+          <button class="absolute top-3 right-3 text-gray-400 hover:text-red-500">♡</button>
+          <img :src="product.image" :alt="product.name" class="w-36 h-36 object-contain my-4" />
+          <h3 class="text-sm font-semibold text-center line-clamp-1">{{ product.name }}</h3>
+          <div class="text-yellow-400 text-xs my-2">★★★★★ <span class="text-gray-400">({{ product.reviews }})</span></div>
+          <div class="flex items-center space-x-2 mt-auto">
+            <span class="font-bold text-base">{{ product.price }} $</span>
+            <span class="line-through text-xs text-gray-400">{{ product.oldPrice }} $</span>
+            <span class="text-xs font-bold text-red-600">{{ product.discount }}</span>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 </template>

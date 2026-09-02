@@ -1,140 +1,137 @@
-<script setup lang="ts">
-    import { ref } from 'vue'
-    const activeNav = ref('Mac')
-    const navItems = [
-    { name: 'Home', path: '/home' },
-    { name: 'Mac', path: '/mac' },
-    { name: 'IPad', path: '/ipad' },
-    { name: 'IPhone', path: '/iphone' },
-    { name: 'Accessories', path: '/accessories' },
-    { name: 'Service', path: '/service' },
-    { name: 'Offers', path: '/offers' },
-    { name: 'Stores', path: '/stores' },
-    ]
-import CategorySlider from "~/components/CategorySlider.vue"
-import SidebarFilter from "~/components/SidebarFilter.vue"
-import ProductCard from "~/components/ProductCard.vue"
+<template>
+  <div class="bg-gray-50 text-gray-900 font-sans min-h-screen">
+    <Header :nav-items="navItems" />
+    <section class="bg-white py-12 px-6 text-center border-b border-gray-100">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">MacBook Pro</h1>
+        <p class="text-lg md:text-xl text-gray-500 mt-2 font-medium">Mind-blowing. Head-turning.</p>
+        
+        <div class="mt-6 flex justify-center space-x-4">
+          <button class="bg-black text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition">Buy</button>
+          <button class="border border-gray-300 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition">Learn more</button>
+        </div>
 
-const products = [
+        <div class="mt-8 flex justify-center">
+          <img 
+            src="https://i.pinimg.com/1200x/5c/05/fa/5c05fa6d77b525404774182e8991d804.jpg" 
+            alt="MacBook Pro" 
+            class="max-w-4xl w-full object-cover mx-auto"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 px-6 max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Explore the lineup.</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div 
+          v-for="product in products" 
+          :key="product.id"
+          class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between text-center hover:shadow-md transition"
+        >
+          <div class="h-44 flex items-center justify-center mb-4">
+            <img :src="product.image" :alt="product.title" class="max-h-full max-w-full object-contain" />
+          </div>
+
+          <div>
+            <h3 class="font-bold text-lg text-gray-900">{{ product.title }}</h3>
+            <p class="text-xs text-gray-500 mt-1">{{ product.subtitle }}</p>
+            <p class="text-sm font-semibold text-gray-900 mt-3">{{ product.price }}</p>
+          </div>
+ 
+          <div class="mt-6 flex flex-col space-y-2">
+            <button class="w-full bg-black text-white text-xs py-2 rounded-lg font-medium hover:bg-gray-800 transition">Buy</button>
+            <button class="w-full border border-gray-300 text-xs py-2 rounded-lg font-medium hover:bg-gray-50 transition">Learn more</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <AfterFooter/>
+    </section>
+  </div>
+</template>
+
+<script setup lang="ts">
+import AfterFooter from '~/layouts/AfterFooter.vue';
+import Header from '~/layouts/Header.vue';
+
+type Product = {
+  id: number;
+  title: string;
+  subtitle: string;
+  price: string;
+  image: string;
+}
+const navItems = [
+  {name:'Home',path:'/'},
+  { name: 'Mac', path: '/mac' },
+  { name: 'IPad', path: '/ipad' },
+  { name: 'IPhone', path: '/iphone' },
+  { name: 'Accessories', path: '/accessories' },
+  { name: 'Service', path: '/service' },
+  { name: 'Offers', path: '/offers' },
+  { name: 'Stores', path: '/stores' },
+]
+const products: Product[] = [
   {
     id: 1,
-    brand: "KROSS",
-    name: "Luma Jacket",
-    price: 190,
-    discount: "-10%",
-    image: "https://i.pinimg.com/236x/bd/6b/2c/bd6b2c554b0c0e8e00d1edf292c8a1ec.jpg",
+    title: 'MacBook Air',
+    subtitle: '13" and 15" M2/M3 chip',
+    price: 'From $1,099',
+    image: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=400&q=80'
   },
   {
     id: 2,
-    brand: "VAN",
-    name: "Stoik Scarf",
-    price: 40,
-    discount: "-15%",
-    image: "https://i.pinimg.com/236x/bd/6b/2c/bd6b2c554b0c0e8e00d1edf292c8a1ec.jpg",
+    title: 'MacBook Pro',
+    subtitle: '14" and 16" M3 Pro/Max',
+    price: 'From $1,599',
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80'
   },
   {
     id: 3,
-    brand: "WILF",
-    name: "Defi Sweater",
-    price: 215,
-    discount: "-10%",
-    image: "https://i.pinimg.com/1200x/4f/87/6d/4f876d6bfe9c5b00883e9feef756941c.jpg",
+    title: 'iMac',
+    subtitle: '24" 4.5K Retina display',
+    price: 'From $1,299',
+    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80'
   },
   {
     id: 4,
-    brand: "SEED",
-    name: "Arca Jacket",
-    price: 174,
-    discount: "-11%",
-    image: "https://i.pinimg.com/736x/59/48/e2/5948e21ac6be9736a773abc156cd0ac8.jpg",
+    title: 'Mac Studio',
+    subtitle: 'M2 Max and M2 Ultra',
+    price: 'From $1,999',
+    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=400&q=80'
   },
   {
     id: 5,
-    brand: "WILF",
-    name: "Hall Shoes",
-    price: 129,
-    discount: "-15%",
-    image: "https://i.pinimg.com/736x/6f/e2/68/6fe268c7854f1407a432e82836c473d2.jpg",
+    title: 'MacBook Air',
+    subtitle: '13" and 15" M2/M3 chip',
+    price: 'From $1,099',
+    image: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=400&q=80'
   },
   {
     id: 6,
-    brand: "VAN",
-    name: "Pop Beanie",
-    price: 45,
-    discount: "-12%",
-    image: "https://i.pinimg.com/736x/6f/e2/68/6fe268c7854f1407a432e82836c473d2.jpg",
+    title: 'MacBook Pro',
+    subtitle: '14" and 16" M3 Pro/Max',
+    price: 'From $1,599',
+    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80'
   },
-]
+  {
+    id: 7,
+    title: 'iMac',
+    subtitle: '24" 4.5K Retina display',
+    price: 'From $1,299',
+    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80'
+  },
+  {
+    id: 8,
+    title: 'Mac Studio',
+    subtitle: 'M2 Max and M2 Ultra',
+    price: 'From $1,999',
+    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=400&q=80'
+  }
+]; 
 </script>
-<template>
-  <div class="bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900 font-sans relative overflow-x-hidden">
-    <!-- Floating Header -->
-    <header class="sticky top-4 z-50 max-w-6xl mx-auto px-7">
-      <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 px-6 py-3 flex items-center justify-between gap-40 ">
-        
-        <!-- Logo Section -->
-        <div class="flex items-center gap-3">
-          <span class="text-3xl font-black text-blue-600 tracking-tight">iOne</span>
-          <div class="h-6 w-1 bg-gray-300"></div>
-          <div class="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
-            <i class="pi pi-apple text-base text-black"></i>
-            <span class="leading-tight">Authorized<br>Reseller</span>
-          </div>
-        </div>
-
-        <nav class="hidden md:flex items-center gap-10">
-          <NuxtLink 
-            v-for="item in navItems" 
-            :key="item.name" 
-            :to="item.path"
-            @click="activeNav = item.name"
-            class="relative text- font-medium transition-colors hover:text-blue-600 py-1"
-            :class="activeNav === item.name ? 'text-black font-semibold' : 'text-gray-600'"
-          >
-            {{ item.name }}
-            <span 
-              v-if="activeNav === item.name" 
-              class="absolute bottom-0 left-0 w-full h-1 bg-purple-600 rounded-full"
-            ></span>
-          </NuxtLink>
-        </nav>
-
-        <!-- Search Icon -->
-        <button class="p-2 text-gray-600 hover:text-black transition-colors rounded-full hover:bg-gray-100">
-          <i class="pi pi-search text-lg"></i>
-        </button>
-      </div>
-    </header>
-</div>
-  <section>
-     <div class="bg-[#faf7f2] ">
-    <div class="max-w-7xl mx-auto my-0">
-      <CategorySlider />
-      <div class="grid grid-cols-12 gap-8 mt-8">
-        <SidebarFilter class="col-span-3"/>
-        <div class="col-span-9">
-          <div class="flex justify-between mb-6">
-            <p class="text-gray-600">9 Products</p>
-
-            <select class="border rounded-md px-4 py-2 bg-white">
-              <option>Highest Price</option>
-              <option>Lowest Price</option>
-            </select>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-6">
-            <ProductCard
-            v-for="item in products"
-            :key="item.id"
-            :product="item"/>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-  </section>
-</template>

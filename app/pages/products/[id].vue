@@ -37,7 +37,7 @@ const product = computed(() => {
           <img
             :src="product.image"
             :alt="product.name"
-            class="w-full h-[600px] object-cover
+            class="w-full object-cover
                    rounded-2xl"
           />
 
