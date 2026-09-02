@@ -97,12 +97,12 @@ const navItems = [
           class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between text-center hover:shadow-md transition"
         >
           <div class="h-44 flex items-center justify-center mb-4">
-            <img :src="product.image" :alt="product.title" class="max-h-full max-w-full object-contain" />
+            <img :src="product.image" :alt="product.name" class="max-h-full max-w-full object-contain" />
           </div>
 
           <div>
-            <h3 class="font-bold text-lg text-gray-900">{{ product.title }}</h3>
-            <p class="text-xs text-gray-500 mt-1">{{ product.subtitle }}</p>
+            <h3 class="font-bold text-lg text-gray-900">{{ product.name }}</h3>
+            <p class="text-xs text-gray-500 mt-1">{{ product.description }}</p>
             <p class="text-sm font-semibold text-gray-900 mt-3">{{ product.price }}</p>
           </div>
  

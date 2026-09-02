@@ -1,103 +1,44 @@
+<!-- app/pages/products/[id].vue -->
 <script setup lang="ts">
-
-import type { Product } from "~/types/product"
+import { useRoute } from 'vue-router'
+import type { Product } from '~/types/product'
 
 const route = useRoute()
+const productId = route.params.id
 
-const { data: products } =
-  await useFetch<Product[]>("/data/products.json")
-
-const product = computed(() => {
-
-  return products.value?.find(
-    item => item.id === Number(route.params.id)
-  )
-
-})
-
+// Fetch product by ID from your API
+const { data: product, pending, error } = await useFetch<Product>(`/api/products/${productId}`)
 </script>
 
-
 <template>
+  <div class="max-w-5xl mx-auto px-6 py-12">
+    <!-- Back Button -->
+    <NuxtLink to="/iphone" class="text-sm text-gray-500 hover:text-black mb-6 inline-block">
+      &larr; Back to iPhone
+    </NuxtLink>
 
-  <div class="min-h-screen bg-[#faf8f4]">
+    <!-- Loading State -->
+    <div v-if="pending" class="text-center py-12">Loading product...</div>
 
-    <Header />
+    <!-- Error State -->
+    <div v-else-if="error" class="text-center text-red-500 py-12">
+      Failed to load product details.
+    </div>
 
-    <main class="max-w-6xl mx-auto px-6 py-12">
-
-      <div
-        v-if="product"
-        class="grid grid-cols-2 gap-12"
-      >
-
-        <!-- Image -->
-        <div>
-
-          <img
-            :src="product.image"
-            :alt="product.name"
-            class="w-full object-cover
-                   rounded-2xl"
-          />
-
-        </div>
-
-
-        <!-- Information -->
-        <div class="flex flex-col justify-center">
-
-          <p
-            class="text-sm uppercase tracking-widest
-                   text-gray-400"
-          >
-            {{ product.brand }}
-          </p>
-
-          <h1
-            class="text-4xl font-bold mt-3"
-          >
-            {{ product.name }}
-          </h1>
-
-          <p
-            class="text-orange-500 text-3xl
-                   font-bold mt-5"
-          >
-            ${{ product.price }}
-          </p>
-
-          <p class="text-gray-600 mt-6 leading-7">
-            {{ product.description }}
-          </p>
-
-          <p class="mt-5">
-            Category:
-            <span class="font-semibold">
-              {{ product.category }}
-            </span>
-          </p>
-
-
-          <!-- Add to Cart -->
-          <button
-            class="mt-8 bg-black text-white
-                   py-4 rounded-xl
-                   hover:bg-gray-800 transition"
-          >
-            Add to Cart
-          </button>
-
-        </div>
-
+    <!-- Detail View -->
+    <div v-else-if="product" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="bg-gray-100 rounded-2xl p-8 flex justify-center">
+        <img :src="product.image" :alt="product.name" class="max-h-96 object-contain" />
       </div>
 
-      <div v-else>
-        Product not found.
+      <div class="space-y-4">
+        <h1 class="text-4xl font-bold text-gray-900">{{ product.name }}</h1>
+        <p class="text-2xl font-semibold text-gray-700">{{ product.price }}</p>
+        
+        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-medium transition-colors">
+          Buy Now
+        </button>
       </div>
-
-    </main>
-
+    </div>
   </div>
-
 </template>
