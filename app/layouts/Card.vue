@@ -41,9 +41,13 @@ const Products: Product[] = [
     </h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div 
+      <!-- Wrap card inside NuxtLink -->
+      <NuxtLink 
         v-for="pro in Products" 
-        :key="pro.id"  class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow duration-200">
+        :key="pro.id" 
+        :to="`/products/${pro.id}`"
+        class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow duration-200 cursor-pointer group"
+      >
         <div class="p-4">
           <div class="h-40 flex items-center justify-center mb-6">
             <img 
@@ -54,20 +58,21 @@ const Products: Product[] = [
           </div>
 
           <!-- Product Info -->
-          <h2 class="text-xl font-medium text-slate-800 leading-snug">
+          <h2 class="text-xl font-medium text-slate-800 leading-snug group-hover:text-blue-600 transition-colors">
             {{ pro.name }}
           </h2>
           <p class="text-slate-400 font-normal mt-3 text-base">
             {{ pro.price }}
           </p>
         </div>
+        
         <div class="bg-slate-50/70 border-t border-slate-100 px-6 py-3.5 flex justify-end items-center">
-          <button class="text-slate-700 hover:text-blue-600 font-medium text-sm flex items-center gap-1 transition-colors">
+          <div class="text-slate-700 group-hover:text-blue-600 font-medium text-sm flex items-center gap-1 transition-colors">
             <span>Learn More</span>
-            <i class="pi pi-angle-right text-base text-slate-600"></i>
-          </button>
+            <i class="pi pi-angle-right text-base text-slate-600 group-hover:text-blue-600"></i>
+          </div>
         </div>
-      </div>
+      </NuxtLink>
     </div>
   </section>
 </template>

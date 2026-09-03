@@ -27,28 +27,42 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div 
+        <!-- Main Product Card wrapped in NuxtLink -->
+        <NuxtLink 
           v-for="product in products" 
           :key="product.id"
-          class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between text-center hover:shadow-md transition"
+          :to="`/products/${product.id}`"
+          class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between text-center hover:shadow-md transition cursor-pointer group"
         >
           <div class="h-44 flex items-center justify-center mb-4">
             <img :src="product.image" :alt="product.title" class="max-h-full max-w-full object-contain" />
           </div>
 
           <div>
-            <h3 class="font-bold text-lg text-gray-900">{{ product.title }}</h3>
+            <h3 class="font-bold text-lg text-gray-900 group-hover:text-blue-600 transition-colors">{{ product.title }}</h3>
             <p class="text-xs text-gray-500 mt-1">{{ product.subtitle }}</p>
             <p class="text-sm font-semibold text-gray-900 mt-3">{{ product.price }}</p>
           </div>
  
           <div class="mt-6 flex flex-col space-y-2">
-            <button class="w-full bg-black text-white text-xs py-2 rounded-lg font-medium hover:bg-gray-800 transition">Buy</button>
-            <button class="w-full border border-gray-300 text-xs py-2 rounded-lg font-medium hover:bg-gray-50 transition">Learn more</button>
+            <!-- Navigation links inside card -->
+            <NuxtLink 
+              :to="`/products/${product.id}`" 
+              class="w-full bg-black text-white text-xs py-2 rounded-lg font-medium hover:bg-gray-800 transition block text-center"
+            >
+              Buy
+            </NuxtLink>
+            <NuxtLink 
+              :to="`/products/${product.id}`" 
+              class="w-full border border-gray-300 text-xs py-2 rounded-lg font-medium hover:bg-gray-50 transition block text-center text-gray-900"
+            >
+              Learn more
+            </NuxtLink>
           </div>
-        </div>
+        </NuxtLink>
       </div>
     </section>
+    
     <section>
       <AfterFooter/>
     </section>
@@ -67,7 +81,7 @@ type Product = {
   image: string;
 }
 const navItems = [
-  {name:'Home',path:'/'},
+  { name: 'Home', path: '/' },
   { name: 'Mac', path: '/mac' },
   { name: 'IPad', path: '/ipad' },
   { name: 'IPhone', path: '/iphone' },
