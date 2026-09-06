@@ -2,7 +2,6 @@
   <Header/>
   <div class="bg-[#FBFBFD] font-sans text-[#1D1D1F] selection:bg-indigo-500/20 selection:text-indigo-600">
 
-    <!-- ================= 1. PAGE HERO HEADER (ENGLISH ONLY & COMPACT) ================= -->
     <section class="pt-12 pb-14 px-4 sm:px-6 lg:px-10 max-w-[1280px] mx-auto text-center space-y-3">
       <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[11px] font-medium tracking-wide border border-indigo-100/80 backdrop-blur-sm">
         <svg class="w-3 h-3 fill-current text-indigo-600" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
@@ -18,7 +17,6 @@
       </p>
     </section>
 
-    <!-- ================= 2. SERVICES QUICK NAV TAB BAR ================= -->
     <nav class="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-y border-slate-200/80 shadow-sm py-2.5 px-4">
       <div class="max-w-[1280px] mx-auto flex items-center justify-start md:justify-center gap-2 overflow-x-auto no-scrollbar scroll-smooth">
         <a 
@@ -33,11 +31,9 @@
       </div>
     </nav>
 
-    <!-- ================= 3. SERVICES GRID SECTION ================= -->
     <section class="py-14 px-4 sm:px-6 lg:px-10 max-w-[1280px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <!-- 1. Easy Payment -->
         <div id="easy-payment" class="bg-white rounded-2xl border border-slate-200/70 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl hover:border-indigo-200 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
           <div>
             <div class="h-44 w-full overflow-hidden relative">
@@ -67,11 +63,10 @@
           </div>
         </div>
 
-        <!-- 2. Trade-In -->
         <div id="trade-in" class="bg-white rounded-2xl border border-slate-200/70 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl hover:border-indigo-200 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
           <div>
             <div class="h-44 w-full overflow-hidden relative">
-              <img src="https://i.pinimg.com/1200x/85/1d/49/851d49c1d06214a7812aba37fee893fc.jpg" alt="Trade In" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80" alt="Trade In" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent"></div>
               <div class="absolute bottom-3 left-3 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-md text-indigo-600 flex items-center justify-center shadow-md">
                 <TradeInIcon class="w-4 h-4 fill-current" />
@@ -97,11 +92,10 @@
           </div>
         </div>
 
-        <!-- 3. Device Protection Plan -->
         <div id="device-protection" class="bg-white rounded-2xl border border-slate-200/70 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl hover:border-indigo-200 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
           <div>
             <div class="h-44 w-full overflow-hidden relative">
-              <img src="https://i.pinimg.com/1200x/7c/63/e0/7c63e0b06e42560fa1909689efd8b6d8.jpg" alt="Protection Plan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=800&q=80" alt="Protection Plan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent"></div>
               <div class="absolute bottom-3 left-3 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-md text-indigo-600 flex items-center justify-center shadow-md">
                 <ProtectionIcon class="w-4 h-4 fill-current" />
@@ -127,7 +121,6 @@
           </div>
         </div>
 
-        <!-- 4. Service Center -->
         <div id="service-center" class="bg-white rounded-2xl border border-slate-200/70 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl hover:border-indigo-200 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
           <div>
             <div class="h-44 w-full overflow-hidden relative">
@@ -157,7 +150,6 @@
           </div>
         </div>
 
-        <!-- 5. Workshops -->
         <div id="workshops" class="bg-white rounded-2xl border border-slate-200/70 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl hover:border-indigo-200 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
           <div>
             <div class="h-44 w-full overflow-hidden relative">
@@ -187,7 +179,6 @@
           </div>
         </div>
 
-        <!-- 6. Portfolio / Enterprise -->
         <div id="portfolio" class="bg-white rounded-2xl border border-slate-200/70 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-xl hover:border-indigo-200 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
           <div>
             <div class="h-44 w-full overflow-hidden relative">
@@ -220,11 +211,9 @@
       </div>
     </section>
 
-    <!-- ================= 4. CLEAN INQUIRY FORM ================= -->
     <section id="inquiry-form" class="py-14 px-4 sm:px-6 lg:px-10 border-t border-slate-200/60 bg-gradient-to-b from-slate-50/50 to-indigo-50/20">
       <div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         
-        <!-- Info Column -->
         <div class="lg:col-span-5 space-y-4 lg:sticky lg:top-20">
           <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">ETEC Customer Care</span>
           <h2 class="text-xl sm:text-3xl font-semibold text-slate-900 tracking-tight leading-snug">
@@ -246,7 +235,6 @@
           </div>
         </div>
 
-        <!-- Form Column -->
         <div class="lg:col-span-7 bg-white/90 backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-lg shadow-indigo-500/5">
           <form @submit.prevent="handleBooking" class="space-y-4">
             <div>
