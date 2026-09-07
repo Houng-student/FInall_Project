@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { A, H } from 'vue-router/dist/index-BN0B0y8a.js'
+import { useCartStore } from '~/stores/cart'
+import Header from '~/layouts/Header.vue'
+import AfterFooter from '~/layouts/AfterFooter.vue'
 
 const route = useRoute()
 const productId = Number(route.params.id)
+const cartStore = useCartStore()
 
-// Track referrer for navigation
 const fromCategory = (route.query.from as string) || ''
 const getBackPath = () => {
   if (!fromCategory || fromCategory.toLowerCase() === 'home') return '/'
   return `/${fromCategory.toLowerCase()}`
 }
-
-// State variables for interactive UI elements
 const activeTab = ref('specs')
 const selectedColor = ref('Natural Titanium')
 const selectedStorage = ref('256GB')
@@ -23,7 +25,8 @@ const allProducts = [
   {
     id: 301,
     name: 'Apple iPhone 15 Pro Max',
-    price: '$1000',
+    price: 1000, // ដកសញ្ញា $ ចេញដើម្បីងាយស្រួលគណនាក្នុង Cart (ប៉ុន្តែពេលបង្ហាញ UI បន្ថែម $ ធម្មតា)
+    priceDisplay: '$1000',
     monthlyPrice: '80 $/mo',
     category: 'iPhone',
     images: [
@@ -77,16 +80,45 @@ const product = computed(() => {
 
 // Cross-sell & Related items mock data
 const addOns = [
-  { id: 401, name: '20W USB-C Power Adapter', price: '2 099 ₽', oldPrice: '2 990 ₽', image: 'https://i.pinimg.com/1200x/7b/82/14/7b82142c1c12db484c175e4b4dac6c17.jpg' },
-  { id: 402, name: 'iPhone 16 Pro Max ', price: '1 490 ₽', image: 'https://i.pinimg.com/736x/fa/a0/eb/faa0eb96723f24c590ab65fd5ed6f745.jpg' },
-  { id: 403, name: 'iPhone 17 Pro Max', price: '2 990 ₽', image: 'https://i.pinimg.com/736x/5e/fa/b6/5efab697bccfddab13ec2d4d262b02ec.jpg' }
+  { id: 401, name: '20W USB-C Power Adapter', price: 25, priceDisplay: '$25', image: 'https://i.pinimg.com/1200x/7b/82/14/7b82142c1c12db484c175e4b4dac6c17.jpg' },
+  { id: 402, name: 'iPhone 16 Pro Max Case', price: 35, priceDisplay: '$35', image: 'https://i.pinimg.com/736x/fa/a0/eb/faa0eb96723f24c590ab65fd5ed6f745.jpg' },
+  { id: 403, name: 'MagSafe Charger', price: 39, priceDisplay: '$39', image: 'https://i.pinimg.com/736x/5e/fa/b6/5efab697bccfddab13ec2d4d262b02ec.jpg' }
 ]
+
+// ២. Function សម្រាប់បន្ថែមទំនិញចូល Cart (រួមទាំង Color និង Storage ដែលជ្រើសរើស)
+const handleAddToCart = () => {
+  if (!product.value) return
+
+  const itemToCart = {
+    id: `${product.value.id}-${selectedColor.value}-${selectedStorage.value}`,
+    productId: product.value.id,
+    name: `${product.value.name} (${selectedStorage.value})`,
+    title: `${product.value.name} (${selectedStorage.value})`,
+    price: product.value.price,
+    image: product.value.images[0],
+    color: selectedColor.value,
+    storage: selectedStorage.value
+  }
+
+  cartStore.addToCart(itemToCart)
+}
+
+// Function សម្រាប់ Add Add-ons
+const handleAddAddOn = (item: any) => {
+  cartStore.addToCart({
+    id: item.id,
+    productId: item.id,
+    name: item.name,
+    title: item.name,
+    price: item.price,
+    image: item.image
+  })
+}
 </script>
 
 <template>
+  <Header />
   <div class="max-w-6xl mx-auto px-4 py-8 text-gray-800 font-sans">
-    
-    <!-- Navigation Breadcrumbs -->
     <nav class="mb-6">
       <NuxtLink :to="getBackPath()" class="text-xs text-gray-400 hover:text-black transition-colors inline-flex items-center gap-1">
         &larr; Back {{ fromCategory ? `to ${fromCategory}` : '' }}
@@ -94,11 +126,7 @@ const addOns = [
     </nav>
 
     <div v-if="product" class="space-y-16">
-      
-      <!-- Top Grid: Gallery + Purchasing Column -->
       <section class="grid grid-cols-1 md:grid-cols-12 gap-10">
-        
-        <!-- Left: Image Thumbnails -->
         <div class="md:col-span-2 flex md:flex-col gap-3 order-2 md:order-1">
           <button 
             v-for="(img, idx) in product.images" 
@@ -109,13 +137,9 @@ const addOns = [
             <img :src="img" class="w-full h-16 object-contain" />
           </button>
         </div>
-
-        <!-- Center: Active Image Display -->
         <div class="md:col-span-5 bg-gray-50 rounded-2xl p-6 flex items-center justify-center order-1 md:order-2">
           <img :src="product.images[activeImageIndex]" :alt="product.name" class="max-h-96 object-contain" />
         </div>
-
-        <!-- Right: Buying Options -->
         <div class="md:col-span-5 space-y-6 order-3">
           <div>
             <h1 class="text-2xl font-bold text-gray-900 leading-snug">{{ product.name }} {{ selectedStorage }}</h1>
@@ -123,11 +147,9 @@ const addOns = [
           </div>
 
           <div class="space-y-1">
-            <div class="text-3xl font-extrabold text-gray-900">{{ product.price }}</div>
+            <div class="text-3xl font-extrabold text-gray-900">{{ product.priceDisplay || `$${product.price}` }}</div>
             <p v-if="product.monthlyPrice" class="text-xs text-gray-400">or {{ product.monthlyPrice }} with installments</p>
           </div>
-
-          <!-- Color Selector -->
           <div class="space-y-2">
             <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Color: {{ selectedColor }}</label>
             <div class="flex gap-3">
@@ -141,7 +163,6 @@ const addOns = [
             </div>
           </div>
 
-          <!-- Storage Selector -->
           <div class="space-y-2">
             <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Storage Capacity</label>
             <div class="grid grid-cols-3 gap-2">
@@ -156,10 +177,12 @@ const addOns = [
             </div>
           </div>
 
-          <!-- Actions -->
           <div class="flex gap-3 pt-2">
-            <button class="flex-1 bg-black hover:bg-gray-800 text-white py-3.5 rounded-xl font-medium transition-colors">
-              Add to Cart
+            <button 
+              @click="handleAddToCart"
+              class="flex-1 bg-black hover:bg-gray-800 text-white py-3.5 rounded-xl font-medium transition-colors flex items-center justify-center gap-2"
+            >
+              🛒 Add to Cart
             </button>
             <button class="p-3.5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
               &#9825;
@@ -168,7 +191,6 @@ const addOns = [
         </div>
       </section>
 
-      <!-- Tabs Navigation -->
       <section class="border-b border-gray-200">
         <div class="flex gap-8 text-sm font-medium">
           <button 
@@ -192,7 +214,6 @@ const addOns = [
         </div>
       </section>
 
-      <!-- Tab 1: Specifications -->
       <section v-if="activeTab === 'specs'" class="space-y-6">
         <h3 class="text-lg font-bold">Technical Specifications</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-sm">
@@ -214,7 +235,6 @@ const addOns = [
         </div>
       </section>
 
-      <!-- Tab 2: About -->
       <section v-if="activeTab === 'about'" class="max-w-2xl space-y-3 text-sm text-gray-600 leading-relaxed">
         <h3 class="text-lg font-bold text-gray-900">Product Overview</h3>
         <p>{{ product.description }}</p>
@@ -241,9 +261,12 @@ const addOns = [
             <img :src="item.image" class="h-28 object-contain mx-auto" />
             <div>
               <p class="text-xs font-semibold line-clamp-1">{{ item.name }}</p>
-              <p class="text-sm font-bold mt-1">{{ item.price }}</p>
+              <p class="text-sm font-bold mt-1">{{ item.priceDisplay || `$${item.price}` }}</p>
             </div>
-            <button class="w-full text-xs bg-gray-100 hover:bg-black hover:text-white py-2 rounded-lg font-medium transition-colors">
+            <button 
+              @click="handleAddAddOn(item)"
+              class="w-full text-xs bg-gray-100 hover:bg-black hover:text-white py-2 rounded-lg font-medium transition-colors"
+            >
               Add Item
             </button>
           </div>
@@ -252,4 +275,7 @@ const addOns = [
 
     </div>
   </div>
+  <section>
+    <AfterFooter />
+  </section>
 </template>

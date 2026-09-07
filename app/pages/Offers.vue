@@ -13,7 +13,7 @@
           Mac & Apple Exclusive Offers
         </h1>
         <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          ស្វែងរកការផ្តល់ជូនពិសេស ការបញ្ចុះតម្លៃដ៏អស្ចារ្យ និងកញ្ចប់ប្រូម៉ូសិនផលិតផល Apple ទាំងអស់នៅទីនេះ។
+          Discover special offers, amazing discounts, and exclusive Apple product bundles right here.
         </p>
       </div>
     </section>
@@ -29,10 +29,10 @@
             MacBook Air & Pro Bundle Offers
           </h2>
           <p class="text-slate-500 text-sm sm:text-base leading-relaxed">
-            ទទួលបានកាបូបស្ដើង ក្បាលឌុយសាក ឬការបញ្ចុះតម្លៃពិសេសលើគ្រឿងបន្លាស់ នៅពេលទិញ Mac ម៉ូដែលដែលបានកំណត់។
+            Get a free laptop sleeve, power adapter, or special discounts on accessories when you purchase selected Mac models.
           </p>
           <div class="pt-2">
-            <button class="bg-slate-900 hover:bg-purple-600 text-white font-medium px-7 py-3.5 rounded-2xl transition-all shadow-lg">
+            <button class="bg-slate-900 hover:bg-purple-600 text-white font-medium px-7 py-3.5 rounded-2xl transition-all shadow-lg cursor-pointer">
               View Eligible Models
             </button>
           </div>
@@ -48,15 +48,16 @@
       </div>
 
       <div class="flex items-center justify-start sm:justify-center overflow-x-auto pb-2 gap-2 text-sm font-medium">
-        <button class="bg-slate-900 text-white px-5 py-2.5 rounded-xl whitespace-nowrap shadow-sm">All Offers</button>
-        <button class="bg-white hover:bg-slate-100 text-slate-600 px-5 py-2.5 rounded-xl border border-slate-200 whitespace-nowrap transition-all">Mac Bundles</button>
-        <button class="bg-white hover:bg-slate-100 text-slate-600 px-5 py-2.5 rounded-xl border border-slate-200 whitespace-nowrap transition-all">Student Discount</button>
-        <button class="bg-white hover:bg-slate-100 text-slate-600 px-5 py-2.5 rounded-xl border border-slate-200 whitespace-nowrap transition-all">Free Gifts</button>
-        <button class="bg-white hover:bg-slate-100 text-slate-600 px-5 py-2.5 rounded-xl border border-slate-200 whitespace-nowrap transition-all">Installment 0%</button>
+        <button class="bg-slate-900 text-white px-5 py-2.5 rounded-xl whitespace-nowrap shadow-sm cursor-pointer">All Offers</button>
+        <button class="bg-white hover:bg-slate-100 text-slate-600 px-5 py-2.5 rounded-xl border border-slate-200 whitespace-nowrap transition-all cursor-pointer">Mac Bundles</button>
+        <button class="bg-white hover:bg-slate-100 text-slate-600 px-5 py-2.5 rounded-xl border border-slate-200 whitespace-nowrap transition-all cursor-pointer">Student Discount</button>
+        <button class="bg-white hover:bg-slate-100 text-slate-600 px-5 py-2.5 rounded-xl border border-slate-200 whitespace-nowrap transition-all cursor-pointer">Free Gifts</button>
+        <button class="bg-white hover:bg-slate-100 text-slate-600 px-5 py-2.5 rounded-xl border border-slate-200 whitespace-nowrap transition-all cursor-pointer">Installment 0%</button>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
+        <!-- Card 1 -->
         <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
           <div>
             <div class="h-48 w-full bg-slate-50 rounded-2xl overflow-hidden mb-5 relative">
@@ -69,18 +70,19 @@
               <span class="text-xs font-bold text-rose-500 bg-rose-50 px-2.5 py-1 rounded-lg">SAVE $150</span>
               <h3 class="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">Back to School Mac Promo</h3>
               <p class="text-slate-500 text-sm leading-relaxed">
-                សម្រាប់សិស្សានុសិស្ស និងលោកគ្រូអ្នកគ្រូ ទទួលបានការបញ្ចុះតម្លៃពិសេសភ្លាមៗពេលទិញ MacBook M2 ឬ M3 ។
+                Special discounts for students and teachers on the purchase of any MacBook M2 or M3 models.
               </p>
             </div>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-slate-400 text-xs font-medium">Valid until Oct 30</span>
             <a href="#" class="text-purple-600 font-semibold text-sm hover:underline inline-flex items-center gap-1">
-              មើលលម្អិត →
+              View Details →
             </a>
           </div>
         </div>
 
+        <!-- Card 2 -->
         <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
           <div>
             <div class="h-48 w-full bg-slate-50 rounded-2xl overflow-hidden mb-5 relative">
@@ -93,18 +95,19 @@
               <span class="text-xs font-bold text-emerald-500 bg-emerald-50 px-2.5 py-1 rounded-lg">FREE GIFT</span>
               <h3 class="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">iPad Pro & Air Accessories</h3>
               <p class="text-slate-500 text-sm leading-relaxed">
-                ថែមជូន Apple Pencil ឬ Smart Folio Case ឥតគិតថ្លៃភ្លាមៗ ពេលទិញ iPad ម៉ូដែលថ្មីជាមួយយើង។
+                Receive a free Apple Pencil or Smart Folio Case instantly when purchasing new iPad models with us.
               </p>
             </div>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-slate-400 text-xs font-medium">Limited Stock</span>
             <a href="#" class="text-purple-600 font-semibold text-sm hover:underline inline-flex items-center gap-1">
-              មើលលម្អិត →
+              View Details →
             </a>
           </div>
         </div>
 
+        <!-- Card 3 -->
         <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
           <div>
             <div class="h-48 w-full bg-slate-50 rounded-2xl overflow-hidden mb-5 relative">
@@ -117,18 +120,19 @@
               <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-lg">0% INTEREST</span>
               <h3 class="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">Easy Installment Plan</h3>
               <p class="text-slate-500 text-sm leading-relaxed">
-                បង់ប្រាក់រំលោះជាមួយអត្រាការប្រាក់ 0% រយៈពេលយូរ ជាមួយធនាគារដៃគូសហការធំៗប្រចាំប្រទេស។
+                Enjoy 0% interest installment plans over flexible terms with our major partner banks nationwide.
               </p>
             </div>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-slate-400 text-xs font-medium">Easy Plan</span>
             <a href="#" class="text-purple-600 font-semibold text-sm hover:underline inline-flex items-center gap-1">
-              មើលលម្អិត →
+              View Details →
             </a>
           </div>
         </div>
 
+        <!-- Card 4 -->
         <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
           <div>
             <div class="h-48 w-full bg-slate-50 rounded-2xl overflow-hidden mb-5 relative">
@@ -141,18 +145,19 @@
               <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-lg">TRADE-IN BONUS</span>
               <h3 class="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">Mac & iPhone Trade-In</h3>
               <p class="text-slate-500 text-sm leading-relaxed">
-                យកឧបករណ៍ចាស់របស់អ្នកមកដូរយកស៊េរីថ្មី ទទួលបានប្រាក់បន្ថែមពិសេស ឬតម្លៃវាយតម្លៃខ្ពស់ជាងមុន។
+                Trade in your old device for a new model and get an extra trade-in bonus or high valuation price.
               </p>
             </div>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-slate-400 text-xs font-medium">Extra $50</span>
             <a href="#" class="text-purple-600 font-semibold text-sm hover:underline inline-flex items-center gap-1">
-              មើលលម្អិត →
+              View Details →
             </a>
           </div>
         </div>
 
+        <!-- Card 5 -->
         <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
           <div>
             <div class="h-48 w-full bg-slate-50 rounded-2xl overflow-hidden mb-5 relative">
@@ -165,18 +170,19 @@
               <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-lg">AIRPODS DEAL</span>
               <h3 class="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">Audio Bundle Promo</h3>
               <p class="text-slate-500 text-sm leading-relaxed">
-                ទទួលបានការបញ្ចុះតម្លៃ 30% លើ AirPods ឬ Beats Headphones រាល់ពេលទិញ Mac ឬ iPad ណាមួយ។
+                Get 30% off AirPods or Beats Headphones with the purchase of any Mac or iPad model.
               </p>
             </div>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-slate-400 text-xs font-medium">Save 30%</span>
             <a href="#" class="text-purple-600 font-semibold text-sm hover:underline inline-flex items-center gap-1">
-              មើលលម្អិត →
+              View Details →
             </a>
           </div>
         </div>
 
+        <!-- Card 6 -->
         <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col justify-between group">
           <div>
             <div class="h-48 w-full bg-slate-50 rounded-2xl overflow-hidden mb-5 relative">
@@ -189,14 +195,14 @@
               <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg">VIP WARRANTY</span>
               <h3 class="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">ETEC Care+ Protection</h3>
               <p class="text-slate-500 text-sm leading-relaxed">
-                ការពារការបាក់បែក និងធ្លាក់ទឹកបន្ថែមរយៈពេល 2 ឆ្នាំពេញ ក្នុងតម្លៃពិសេសពេលទិញឧបករណ៍ថ្មី។
+                Get up to 2 full years of accidental damage and liquid protection at a special rate when buying new devices.
               </p>
             </div>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
             <span class="text-slate-400 text-xs font-medium">Care+ Plan</span>
             <a href="#" class="text-purple-600 font-semibold text-sm hover:underline inline-flex items-center gap-1">
-              មើលលម្អិត →
+              View Details →
             </a>
           </div>
         </div>

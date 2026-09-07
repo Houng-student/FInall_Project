@@ -1,29 +1,16 @@
 <script setup lang="ts">
-
 import type { Product } from "~/types/product"
 
 defineProps<{
   product: Product
 }>()
-
 </script>
 
 <template>
-
-  <NuxtLink
-    :to="`/products/${product.id}`"
-    class="block"
-  >
-
-    <div
-      class="bg-white rounded-xl overflow-hidden
-             hover:shadow-xl transition duration-300
-             cursor-pointer"
-    >
-
+  <div class="bg-white rounded-xl overflow-hidden hover:shadow-xl transition duration-300">
+    <NuxtLink :to="`/products/${product.id}`" class="block">
       <!-- Image -->
       <div class="relative">
-
         <img
           :src="product.image"
           :alt="product.name"
@@ -32,33 +19,24 @@ defineProps<{
 
         <!-- Discount -->
         <div class="absolute top-3 left-3 flex gap-2">
-
           <span
-            class="bg-red-400 text-white text-xs
-                   px-2 py-1 rounded"
+            v-if="product.discount"
+            class="bg-red-400 text-white text-xs px-2 py-1 rounded"
           >
             {{ product.discount }}
           </span>
 
           <span
-            class="bg-gray-800 text-white text-xs
-                   px-2 py-1 rounded"
+            class="bg-gray-800 text-white text-xs px-2 py-1 rounded"
           >
             SALE
           </span>
-
         </div>
-
       </div>
 
-
       <!-- Information -->
-      <div class="p-4">
-
-        <p
-          class="text-xs uppercase tracking-widest
-                 text-gray-400"
-        >
+      <div class="p-4 pb-1">
+        <p class="text-xs uppercase tracking-widest text-gray-400">
           {{ product.brand }}
         </p>
 
@@ -66,17 +44,17 @@ defineProps<{
           {{ product.name }}
         </h2>
 
-        <p
-          class="text-orange-500 text-xl
-                 font-bold mt-2"
-        >
+        <p class="text-orange-500 text-xl font-bold mt-2">
           ${{ product.price }}
         </p>
-
       </div>
-
+    </NuxtLink>
+    <div class="p-4 pt-2">
+      <CartButton 
+        :product="product" 
+        class="w-full bg-black hover:bg-gray-800 text-white text-sm font-medium py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2"
+      />
     </div>
 
-  </NuxtLink>
-
+  </div>
 </template>
