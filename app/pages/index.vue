@@ -13,6 +13,7 @@
     import LastCard from "~/layouts/LastCard.vue";
     import AfterFooter from "~/layouts/AfterFooter.vue";
     import Header from '~/layouts/Header.vue';
+    import Product from "~/layouts/Product.vue";
 
     const banners = [
     "https://i.pinimg.com/736x/b3/1f/53/b31f534ba205b0cebfac15a4579c199c.jpg",
@@ -103,6 +104,9 @@
   </section>
   <section>
     <LastCard/>
+  </section>
+  <section>
+    <Product/>
   </section>
   <section>
     <AfterFooter/>

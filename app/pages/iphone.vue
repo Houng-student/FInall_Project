@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import AfterFooter from '~/layouts/AfterFooter.vue'
 import Header from '~/layouts/Header.vue'
 
 const route = useRoute()
 
 const activeTab = ref('All Models')
-const tabs = ['All Models', 'iPhone 15 Pro', 'iPhone 15', 'iPhone 14', 'iPhone SE']
+const tabs = ['All Models', 'iPhone 17 Pro Max', 'iPhone 16 Pro Max', 'iPhone 15 Pro Max', 'iPhone 14 Pro Max', 'iPhone 13 Pro Max', 'iPhone SE']
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -38,11 +39,11 @@ type Product = {
 
 const products = ref<Product[]>([
   {
-    id: 1,
+    id: 17,
     name: 'iPhone 15 Pro',
     isNew: true,
     price: 'From $999',
-    category: 'iPhone 15 Pro',
+    category: 'iPhone 15 Pro Max',
     selectedColor: '#c2bcb2',
     colors: [
       { name: 'Natural Titanium', hex: '#c2bcb2', image: 'https://i.pinimg.com/736x/44/06/1b/44061b34060973e422570c0485219c72.jpg' },
@@ -53,11 +54,11 @@ const products = ref<Product[]>([
     image: 'https://i.pinimg.com/1200x/3c/da/92/3cda92d33c5411eef69b3387de362dba.jpg'
   },
   {
-    id: 2,
+    id: 18,
     name: 'iPhone 15',
     isNew: true,
     price: 'From $799',
-    category: 'iPhone 15',
+    category: 'iPhone 15 Pro Max',
     selectedColor: '#fae7e8',
     colors: [
       { name: 'Pink', hex: '#fae7e8', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
@@ -69,11 +70,11 @@ const products = ref<Product[]>([
     image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg'
   },
   {
-    id: 3,
+    id: 19,
     name: 'iPhone 15 Pro',
     isNew: true,
     price: 'From $999',
-    category: 'iPhone 15 Pro',
+    category: 'iPhone 15 Pro Max',
     selectedColor: '#c2bcb2',
     colors: [
       { name: 'Natural Titanium', hex: '#c2bcb2', image: 'https://i.pinimg.com/736x/44/06/1b/44061b34060973e422570c0485219c72.jpg' },
@@ -81,10 +82,10 @@ const products = ref<Product[]>([
       { name: 'White Titanium', hex: '#f2f1ec', image: 'https://i.pinimg.com/736x/44/06/1b/44061b34060973e422570c0485219c72.jpg' },
       { name: 'Black Titanium', hex: '#353638', image: 'https://i.pinimg.com/736x/f4/d3/bf/f4d3bf94944a4a199881500693888516.jpg' }
     ],
-    image: 'https://i.pinimg.com/736x/44/06/1b/44061b34060973e422570c0485219c72.jpg'
+    image: 'https://i.pinimg.com/736x/ae/a0/68/aea06803e988d5a1791d2631c944b9f1.jpg'
   },
   {
-    id: 4,
+    id: 20,
     name: 'iPhone 1se',
     isNew: true,
     price: 'From $799',
@@ -100,11 +101,11 @@ const products = ref<Product[]>([
     image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg'
   },
   {
-    id: 5,
-    name: 'iPhone 14 pro',
+    id: 21,
+    name: 'iPhone 15 pro',
     isNew: true,
     price: 'From $999',
-    category: 'iPhone 15 Pro',
+    category: 'iPhone 15 Pro Max',
     selectedColor: '#c2bcb2',
     colors: [
       { name: 'Natural Titanium', hex: '#c2bcb2', image: 'https://i.pinimg.com/736x/44/06/1b/44061b34060973e422570c0485219c72.jpg' },
@@ -115,11 +116,11 @@ const products = ref<Product[]>([
     image: 'https://i.pinimg.com/736x/44/06/1b/44061b34060973e422570c0485219c72.jpg'
   },
   {
-    id: 6,
+    id: 22,
     name: 'iPhone 14 pro max',
     isNew: true,
     price: 'From $799',
-    category: 'iPhone 14',
+    category: 'iPhone 14 Pro Max',
     selectedColor: '#fae7e8',
     colors: [
       { name: 'Pink', hex: '#fae7e8', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
@@ -160,6 +161,102 @@ const products = ref<Product[]>([
       { name: 'Black', hex: '#353638', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' }
     ],
     image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg'
+  },
+  {
+    id: 9,
+    name: 'iPhone 17 Pro Max',
+    isNew: true,
+    price: 'From $799',
+    category: 'iPhone 17 Pro Max',
+    selectedColor: '#fae7e8',
+    colors: [
+      { name: 'Pink', hex: '#fae7e8', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Yellow', hex: '#f3e8c9', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Green', hex: '#dbe7d9', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Blue', hex: '#d6e0ea', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Black', hex: '#353638', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' }
+    ],
+    image: 'https://i.pinimg.com/1200x/63/6f/51/636f5197727e12959d4b9b9cd94936b4.jpg'
+  },
+  {
+    id: 10,
+    name: 'iPhone 17 Pro Max',
+    isNew: true,
+    price: 'From $799',
+    category: 'iPhone 17 Pro Max',
+    selectedColor: '#fae7e8',
+    colors: [
+      { name: 'Pink', hex: '#fae7e8', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Yellow', hex: '#f3e8c9', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Green', hex: '#dbe7d9', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Blue', hex: '#d6e0ea', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Black', hex: '#353638', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' }
+    ],
+    image: 'https://i.pinimg.com/1200x/cb/13/4e/cb134ed9a8c5f2e141902744b2a8bca3.jpg'
+  },
+  {
+    id: 11,
+    name: 'iPhone 17 ',
+    isNew: true,
+    price: 'From $799',
+    category: 'iPhone 17 Pro Max',
+    selectedColor: '#fae7e8',
+    colors: [
+      { name: 'Pink', hex: '#fae7e8', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Yellow', hex: '#f3e8c9', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Green', hex: '#dbe7d9', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Blue', hex: '#d6e0ea', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Black', hex: '#353638', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' }
+    ],
+    image: 'https://i.pinimg.com/736x/57/cd/91/57cd91258024123d8fa45c65dc5e64aa.jpg'
+  },
+  {
+    id: 12,
+    name: 'iPhone 16 Pro Max',
+    isNew: true,
+    price: 'From $799',
+    category: 'iPhone 16 Pro Max',
+    selectedColor: '#fae7e8',
+    colors: [
+      { name: 'Pink', hex: '#fae7e8', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Yellow', hex: '#f3e8c9', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Green', hex: '#dbe7d9', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Blue', hex: '#d6e0ea', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Black', hex: '#353638', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' }
+    ],
+    image: 'https://i.pinimg.com/736x/b4/7c/03/b47c0372aa7ccf43c55fdcb6c47c9a84.jpg'
+  },
+  {
+    id: 13,
+    name: 'iPhone 16 Pro Max',
+    isNew: true,
+    price: 'From $799',
+    category: 'iPhone 16 Pro Max',
+    selectedColor: '#fae7e8',
+    colors: [
+      { name: 'Pink', hex: '#fae7e8', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Yellow', hex: '#f3e8c9', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Green', hex: '#dbe7d9', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Blue', hex: '#d6e0ea', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Black', hex: '#353638', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' }
+    ],
+    image: 'https://i.pinimg.com/736x/85/a1/c3/85a1c3aa739334fd74c71807b68c7708.jpg'
+  },
+  {
+    id: 14,
+    name: 'iPhone 16 Pro Max',
+    isNew: true,
+    price: 'From $799',
+    category: 'iPhone 16 Pro Max',
+    selectedColor: '#fae7e8',
+    colors: [
+      { name: 'Pink', hex: '#fae7e8', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Yellow', hex: '#f3e8c9', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Green', hex: '#dbe7d9', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' },
+      { name: 'Blue', hex: '#d6e0ea', image: 'https://i.pinimg.com/1200x/2c/72/b1/2c72b1c676062281b5b013da3f6f58f0.jpg' },
+      { name: 'Black', hex: '#353638', image: 'https://i.pinimg.com/1200x/7b/c0/d2/7bc0d2852296b33ce10e0a31c3305870.jpg' }
+    ],
+    image: 'https://i.pinimg.com/736x/06/b1/54/06b154f154618dce067ba54302524fc5.jpg'
   }
 ])
 
@@ -254,4 +351,7 @@ const filteredProducts = computed(() => {
       </div>
     </main>
   </div>
+  <section>
+    <AfterFooter/>
+  </section>
 </template>
