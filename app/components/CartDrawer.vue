@@ -47,7 +47,7 @@ const closeDrawer = () => {
         </div>
         <div class="max-h-60 overflow-y-auto p-3 space-y-3">
           <div v-if="cartStore.items.length === 0" class="py-6 text-center text-gray-400 text-xs">
-            កន្ត្រកទំនេរ
+            Nothing in your cart yet. Start adding some products!
           </div>
 
           <div 
