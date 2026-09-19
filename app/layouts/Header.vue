@@ -12,7 +12,7 @@ const userProfile = ref({
   isLoggedIn: true
 })
 
-// Removed Login & Register from the general navigation list
+// Navigation Items
 const navItems = [
   { name: 'Home', path: '/' },
   { name: 'Mac', path: '/mac' },
@@ -21,6 +21,7 @@ const navItems = [
   { name: 'Accessories', path: '/accessories' },
 ]
 
+// Automatic close when page route changes
 watch(() => route.path, () => {
   isMenuOpen.value = false
   isProfileMenuOpen.value = false
@@ -29,29 +30,32 @@ watch(() => route.path, () => {
 
 <template>
   <header class="sticky top-4 z-50 max-w-7xl mx-auto px-4 sm:px-7">
-    <!-- Header Main Bar -->
-    <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-sm border border-gray-100 px-6 py-3 flex items-center justify-between gap-4 lg:gap-20">
+    <!-- Main Navbar Bar -->
+    <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
       
+      <!-- Mobile Hamburger Button (Left Side) -->
+      <button 
+        type="button"
+        @click="isMenuOpen = true" 
+        aria-label="Open Navigation Menu"
+        class="lg:hidden p-2 text-gray-800 hover:text-black transition-all active:scale-95 rounded-xl hover:bg-gray-100 -ml-2"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
       <!-- Logo Section -->
       <NuxtLink to="/" class="flex items-center gap-3 shrink-0">
-  <header class="sticky top-4 z-50 max-w-7xl mx-auto px-7">
-    <div class="bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 px-6 py-3 flex items-center justify-between gap-6">
-      
-      <!-- Logo Section -->
-      <div class="flex items-center gap-3 shrink-0">
-        <span class="text-3xl font-black text-blue-600 tracking-tight">Etec</span>
-        <div class="h-6 w-1 bg-gray-300"></div>
-        <div class="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
-          <i class="pi pi-apple text-base text-black"></i>
+        <span class="text-2xl sm:text-3xl font-black text-blue-600 tracking-tight">Etec</span>
+        <div class="h-5 sm:h-6 w-1 bg-gray-300"></div>
+        <div class="flex items-center gap-1.5 text-[10px] sm:text-xs text-gray-500 font-medium">
+          <i class="pi pi-apple text-sm sm:text-base text-black"></i>
           <span class="leading-tight">Authorized<br>Reseller</span>
         </div>
       </NuxtLink>
 
-      <!-- Desktop Navigation Links (មានតែ Menu Links សុទ្ធ) -->
-      <nav class="hidden lg:flex items-center gap-10">
-      </div>
- 
-      <!-- Navigation Links -->
+      <!-- Desktop Navigation Links -->
       <nav class="hidden lg:flex items-center gap-8">
         <NuxtLink 
           v-for="item in navItems" 
@@ -68,19 +72,17 @@ watch(() => route.path, () => {
         </NuxtLink>
       </nav>
 
-      <!-- Right Action Items (Search, Cart, Profile, Hamburger) -->
-      <div class="flex items-center gap-3">
-        <!-- 1. Search Button -->
+      <!-- Right Action Items -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Search Button -->
         <button type="button" aria-label="Search" class="p-2 text-gray-600 hover:text-black transition-colors rounded-full hover:bg-gray-100">
-          <i class="pi pi-search text-lg"></i>
+          <i class="pi pi-search text-base sm:text-lg"></i>
         </button>
 
-        <!-- 2. Cart Icon (ដាក់ជិត Profile) -->
-        <div class="flex items-center justify-center">
-          <CartIcon />
-        </div>
+        <!-- Cart Icon -->
+        <CartIcon />
 
-        <!-- 3. Profile Picture & Dropdown Menu -->
+        <!-- User Profile Avatar & Dropdown -->
         <div class="relative">
           <button 
             v-if="userProfile.isLoggedIn"
@@ -95,18 +97,9 @@ watch(() => route.path, () => {
             />
           </button>
 
-          <NuxtLink 
-            v-else 
-            to="/login" 
-            class="p-2 text-gray-600 hover:text-blue-600 transition-colors block"
-          >
-            <i class="pi pi-user text-lg"></i>
-          </NuxtLink>
-
-          <!-- Profile Dropdown Menu -->
+          <!-- Dropdown Menu -->
           <div 
-            v-if="isProfileMenuOpen" 
-            @click.outside="isProfileMenuOpen = false"
+            v-if="userProfile.isLoggedIn && isProfileMenuOpen" 
             class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50 animate-in fade-in zoom-in-95 duration-150"
           >
             <div class="px-4 py-2 border-b border-gray-100">
@@ -132,67 +125,49 @@ watch(() => route.path, () => {
           </div>
         </div>
 
-        <!-- 4. Hamburger Icon Button (Mobile & iPad) -->
-        <button 
-          type="button"
-          @click="isMenuOpen = true" 
-          aria-label="Open Navigation Menu"
-          class="lg:hidden p-2 text-gray-800 hover:text-black transition-all active:scale-95 rounded-xl hover:bg-gray-100"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-      <!-- Right Action Items -->
-      <div class="flex items-center gap-3 shrink-0">
-        <CartIcon />
+        <!-- Auth Buttons (When Not Logged In) -->
+        <div v-if="!userProfile.isLoggedIn" class="hidden sm:flex items-center gap-2">
+          <NuxtLink 
+            to="/auth/login"
+            class="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-300 hover:border-blue-600 rounded-xl transition-all duration-200"
+          >
+            Login
+          </NuxtLink>
 
-        <button class="p-2 text-gray-600 hover:text-black transition-colors rounded-full hover:bg-gray-100">
-          <i class="pi pi-search text-lg"></i>
-        </button>
-
-        <!-- Login Button (Outline style) -->
-        <NuxtLink 
-          to="/auth/login"
-          class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 border border-gray-300 hover:border-blue-600 rounded-xl transition-all duration-200"
-        >
-          Login
-        </NuxtLink>
-
-        <!-- Register Button (Solid CTA style) -->
-        <NuxtLink 
-          to="/auth/register"
-          class="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md hover:shadow-blue-500/20 transition-all duration-200"
-        >
-          Register
-        </NuxtLink>
+          <NuxtLink 
+            to="/auth/register"
+            class="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-md hover:shadow-blue-500/20 transition-all duration-200"
+          >
+            Register
+          </NuxtLink>
+        </div>
       </div>
 
     </div>
 
-    <!-- Mobile Offcanvas Drawer -->
+    <!-- Mobile Left Offcanvas Drawer -->
     <ClientOnly>
       <Teleport to="body">
+        <!-- Overlay -->
         <div 
           v-if="isMenuOpen" 
           @click="isMenuOpen = false"
-          class="fixed inset-0 bg-black/20 backdrop-blur-xs z-[998] transition-opacity duration-300"
+          class="fixed inset-0 bg-black/30 backdrop-blur-xs z-[998] transition-opacity duration-300"
         ></div>
 
+        <!-- Left Offcanvas Content -->
         <div 
-          class="fixed top-0 right-0 h-fullw-[65vw] sm:w-72 max-w-xs bg-white z-[999] transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between border-l border-gray-100 shadow-xl"
-          :class="isMenuOpen ? 'translate-x-0' : 'translate-x-full'"
+          class="fixed top-0 left-0 h-full w-[75vw] sm:w-72 max-w-xs bg-white z-[999] transition-transform duration-300 ease-in-out p-6 flex flex-col justify-between border-r border-gray-100 shadow-xl"
+          :class="isMenuOpen ? 'translate-x-0' : '-translate-x-full'"
         >
           <div>
-            <!-- Drawer Header -->
+            <!-- Header inside Drawer -->
             <div class="flex items-center justify-between pb-4 border-b border-gray-100">
-              <span class="text-xl font-black text-blue-600 tracking-tight">Etec</span>
-                <div class="h-6 w-1 bg-gray-300"></div>
-                <div class="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
-                  <i class="pi pi-apple text-base text-black"></i>
-                  <span class="leading-tight">Authorized<br>Reseller</span>
-                </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xl font-black text-blue-600 tracking-tight">Etec</span>
+                <div class="h-4 w-0.5 bg-gray-300"></div>
+                <span class="text-[10px] text-gray-500 font-medium leading-tight">Authorized<br>Reseller</span>
+              </div>
 
               <button 
                 type="button"
@@ -206,7 +181,7 @@ watch(() => route.path, () => {
               </button>
             </div>
 
-            <!-- Profile Info in Mobile Drawer -->
+            <!-- Profile Badge (Mobile) -->
             <div v-if="userProfile.isLoggedIn" class="my-4 p-3 bg-gray-50 rounded-xl flex items-center gap-3">
               <img :src="userProfile.avatar" alt="User Profile" class="w-10 h-10 rounded-full bg-white border border-gray-200" />
               <div class="overflow-hidden">
@@ -215,7 +190,7 @@ watch(() => route.path, () => {
               </div>
             </div>
 
-            <!-- Navigation Links -->
+            <!-- Mobile Navigation -->
             <nav class="flex flex-col gap-4 mt-4 px-1">
               <NuxtLink 
                 v-for="item in navItems" 
@@ -225,16 +200,31 @@ watch(() => route.path, () => {
                 :class="route.path === item.path ? 'text-black font-semibold' : 'text-gray-600'"
               >
                 {{ item.name }}
-                
                 <span 
                   v-if="route.path === item.path" 
                   class="absolute bottom-0 left-0 w-full h-1 bg-purple-600 rounded-full"
                 ></span>
               </NuxtLink>
             </nav>
+
+            <!-- Mobile Login & Register Buttons -->
+            <div v-if="!userProfile.isLoggedIn" class="flex sm:hidden flex-col gap-2 mt-6 pt-4 border-t border-gray-100">
+              <NuxtLink 
+                to="/auth/login"
+                class="w-full text-center py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-xl"
+              >
+                Login
+              </NuxtLink>
+              <NuxtLink 
+                to="/auth/register"
+                class="w-full text-center py-2 text-sm font-medium text-white bg-blue-600 rounded-xl shadow-md"
+              >
+                Register
+              </NuxtLink>
+            </div>
           </div>
 
-          <!-- Compact Footer -->
+          <!-- Drawer Footer -->
           <div class="pt-4 border-t border-gray-100 flex flex-col gap-3 text-xs text-gray-400">
             <div class="flex items-center justify-between text-black font-medium">
               <div class="flex items-center gap-1.5">
