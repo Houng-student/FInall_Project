@@ -1,75 +1,81 @@
 // app/stores/cart.js
-import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { defineStore } from "pinia";
+import { ref, computed } from "vue";
 
-export const useCartStore = defineStore('cart', () => {
-  const items = ref([])
+export const useCartStore = defineStore("cart", () => {
+  const items = ref([]);
+
+  // Keep the cart entries typed as a normal array instead of a never[] inferred from an empty literal.
+  // This avoids template type errors when iterating the cart in components.
+  const cartItems = computed(() => items.value || []);
 
   // គណនាចំនួនទំនិញសរុប
   const totalItems = computed(() => {
-    return items.value.reduce((total, item) => total + (item.quantity || 1), 0)
-  })
+    return items.value.reduce((total, item) => total + (item.quantity || 1), 0);
+  });
 
   // គណនាតម្លៃសរុប
   const totalPrice = computed(() => {
     return items.value.reduce((total, item) => {
-      const priceNum = typeof item.price === 'number' 
-        ? item.price 
-        : parseFloat(String(item.price).replace(/[^0-9.]/g, '')) || 0
-      return total + (priceNum * (item.quantity || 1))
-    }, 0)
-  })
+      const priceNum =
+        typeof item.price === "number"
+          ? item.price
+          : parseFloat(String(item.price).replace(/[^0-9.]/g, "")) || 0;
+      return total + priceNum * (item.quantity || 1);
+    }, 0);
+  });
 
   // បន្ថែមទំនិញចូល Cart
   const addToCart = (product) => {
-    if (!product) return
+    if (!product) return;
 
-    const existingItem = items.value.find(i => i.id === product.id)
+    const existingItem = items.value.find((i) => i.id === product.id);
     if (existingItem) {
-      existingItem.quantity = (existingItem.quantity || 1) + 1
+      existingItem.quantity = (existingItem.quantity || 1) + 1;
     } else {
-      items.value.push({ ...product, quantity: 1 })
+      items.value.push({ ...product, quantity: 1 });
     }
-  }
+  };
 
   // បន្ថែមចំនួនទំនិញ (+1)
   const increaseQuantity = (id) => {
-    const item = items.value.find(i => i.id === id)
+    const item = items.value.find((i) => i.id === id);
     if (item) {
-      item.quantity++
+      item.quantity++;
     }
-  }
+  };
 
   // កាត់បន្ថយចំនួនទំនិញ (-1)
   const decreaseQuantity = (id) => {
-    const item = items.value.find(i => i.id === id)
+    const item = items.value.find((i) => i.id === id);
     if (item) {
       if (item.quantity > 1) {
-        item.quantity--
+        item.quantity--;
       } else {
-        removeFromCart(id)
+        removeFromCart(id);
       }
     }
-  }
+  };
 
   // លុបទំនិញចេញពី Cart
   const removeFromCart = (id) => {
-    items.value = items.value.filter(i => i.id !== id)
-  }
+    items.value = items.value.filter((i) => i.id !== id);
+  };
 
   // សម្អាត Cart
   const clearCart = () => {
-    items.value = []
-  }
+    items.value = [];
+  };
 
   return {
     items,
+    cartItems,
     totalItems,
     totalPrice,
     addToCart,
     increaseQuantity,
     decreaseQuantity,
     removeFromCart,
-    clearCart
-  }
-})
+    clearCart,
+  };
+});
