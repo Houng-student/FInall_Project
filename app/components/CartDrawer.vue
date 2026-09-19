@@ -3,7 +3,7 @@
 import { computed } from "vue";
 import { useCartStore } from "~/stores/cart";
 
-defineProps<{
+const props = defineProps<{
   isOpen: boolean;
 }>();
 
@@ -20,7 +20,12 @@ const closeDrawer = () => {
 
 <template>
   <div>
-    <div v-if="isOpen" @click="closeDrawer" class="fixed inset-0 z-40"></div>
+    <div
+      v-if="props.isOpen"
+      @click="closeDrawer"
+      class="fixed inset-0 z-40 bg-black/10"
+    ></div>
+
     <Transition
       enter-active-class="transition ease-out duration-200"
       enter-from-class="opacity-0 scale-95 -translate-y-2"
@@ -30,10 +35,9 @@ const closeDrawer = () => {
       leave-to-class="opacity-0 scale-95 -translate-y-2"
     >
       <div
-        v-if="isOpen"
+        v-if="props.isOpen"
         class="absolute right-0 top-full mt-2 w-80 bg-white rounded-2xl shadow-xl border border-gray-100 z-50 overflow-hidden"
       >
-        <!-- Header -->
         <div
           class="px-4 py-3 border-b border-gray-100 flex items-center justify-between bg-gray-50/50"
         >
@@ -52,12 +56,13 @@ const closeDrawer = () => {
             &times;
           </button>
         </div>
+
         <div class="max-h-60 overflow-y-auto p-3 space-y-3">
           <div
             v-if="cartItems.length === 0"
             class="py-6 text-center text-gray-400 text-xs"
           >
-            កន្ត្រកទំនេរ
+            Nothing in your cart yet. Start adding some products!
           </div>
 
           <div
@@ -97,6 +102,7 @@ const closeDrawer = () => {
             </div>
           </div>
         </div>
+
         <div
           v-if="cartItems.length > 0"
           class="p-3 border-t border-gray-100 bg-white space-y-2"
